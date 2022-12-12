@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: gateway-server
+  boot:
+    admin:
+      client:
+        url: http://localhost:9091
+  cloud:
+    gateway:
+      routes:
+        - id: greeting-route
+          uri: ${GREETING_SERVICE_URL:http://localhost:8300}
+          predicates:
+            - Path=/greeting-service/**
+          filters:
+            - AddRequestHeader=X-Tenant,CROWDCODE
+            - AddResponseHeader=X-Tenant,MICROMETER
+#      default-filters:
+#        - postLoggingGatewayFilter
+server:
+  port: 9000
+logging:
+  level:
+    root: debug
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
