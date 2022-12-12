@@ -1,6 +1,10 @@
 spring:
   application:
     name: config-server
+  boot:
+    admin:
+      client:
+        url: http://localhost:9091
   cloud:
     config:
       server:
