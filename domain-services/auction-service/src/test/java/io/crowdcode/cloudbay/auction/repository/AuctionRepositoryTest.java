@@ -15,7 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class AuctionRepositoryTest {
 
@@ -23,7 +22,6 @@ public class AuctionRepositoryTest {
     private TestEntityManager testEntityManager;
 
     @Test
-    @Disabled
     void saveAuction() {
         Auction auction = AuctionFixture.defaultAuction()
                 .setBids(

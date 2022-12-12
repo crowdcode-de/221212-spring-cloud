@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/crowdcode-de/cloudbay-config.git"
+#          uri: "file:/Users/idueppe/development/seminars/config-repository
+server:
+  port: 8888
+logging:
+  level:
+    root: info
+
