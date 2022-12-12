@@ -1,12 +1,8 @@
 server:
-  http_listen_port: 3100
+  http_listen_port: 3200
 
 distributor:
   receivers:
-    otlp:
-      protocols:
-        grpc:
-        http:
     zipkin:
 
 ingester:
