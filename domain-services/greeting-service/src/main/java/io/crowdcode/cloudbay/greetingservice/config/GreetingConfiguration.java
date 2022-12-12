@@ -1,6 +1,7 @@
 package io.crowdcode.cloudbay.greetingservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class GreetingConfiguration {
 
     @Bean
+//    @RefreshScope später
     @ConfigurationProperties(value = "io.crowdcode.greeting", ignoreUnknownFields = false)
     public GreetingProperties greetingProperties() {
         return new GreetingProperties();
