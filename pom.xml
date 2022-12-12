@@ -34,6 +34,7 @@
         <module>domain-services/greeting-service</module>
         <module>domain-services/auction-service</module>
         <module>cluster-services/config-server</module>
+        <module>cluster-services/admin-server</module>
     </modules>
 
 </project>
