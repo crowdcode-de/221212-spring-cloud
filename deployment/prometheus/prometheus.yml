@@ -1,7 +1,6 @@
 global:
   scrape_interval: 2s
   evaluation_interval: 5s
-
 scrape_configs:
   - job_name: 'gateway_service'
     scrape_interval: 2s
@@ -9,33 +8,33 @@ scrape_configs:
     static_configs:
       - targets: ['host.docker.internal:9000']
         labels:
-          service: gateway-service
+          application: 'gateway-service'
   - job_name: 'greeting-service'
-    metrics_path: '/actuator/prometheus'
+    metrics_path: '/greeting-service/actuator/prometheus'
     scheme: 'http'
     scrape_interval: 5s
     static_configs:
       - targets: ['host.docker.internal:8300']
         labels:
-          service: greeting-service
+          application: 'greeting-service'
   - job_name: 'time-service'
-    metrics_path: '/actuator/prometheus'
+    metrics_path: '/time-service/actuator/prometheus'
     scheme: 'http'
     scrape_interval: 5s
     static_configs:
       - targets: ['host.docker.internal:8400']
         labels:
-          service: time-service
+          application: 'time-service'
   - job_name: 'catalog-service'
-    metrics_path: '/actuator/prometheus'
+    metrics_path: '/catalog-service/actuator/prometheus'
     scheme: 'http'
     scrape_interval: 5s
     static_configs:
       - targets: ['host.docker.internal:8500']
         labels:
-          service: catalog-service
+          application: 'catalog-service'
   - job_name: 'auction-service'
-    metrics_path: '/actuator/prometheus'
+    metrics_path: '/auction-service/actuator/prometheus'
     scheme: 'http'
 #    basic_auth:
 #      username: 'metrics'
@@ -44,4 +43,4 @@ scrape_configs:
     static_configs:
       - targets: ['host.docker.internal:8600']
         labels:
-          service: auction-service
+          application: 'auction-service'
