@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: account-service
+  profiles:
+    include: "with-security"
+
+server:
+  port: 8100
+  servlet:
+    context-path: /account-service
+
+logging:
+  level:
+    root: info
+    org.springframework.security: trace
+

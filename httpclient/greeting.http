@@ -1,0 +1,4 @@
+GET http://localhost:8300/greeting-service/sayHello
+
+### Refresh Properties
+POST http://localhost:8300/greeting-service/actuator/refresh

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.crowdcode.cloudbay</groupId>
+    <artifactId>cloudbay</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>cloudbay</name>
+    <description>Cloud Native Performance Tuning</description>
+
+    <organization>
+        <name>CROWDCODE GmbH + Co. KG</name>
+        <url>https://crowdcode.io</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Ingo Düppe</name>
+            <email>ingo.dueppe@crowdcode.io</email>
+            <organization>CROWDCODE GmbH + Co. KG</organization>
+            <organizationUrl>https://www.crowdcode.io</organizationUrl>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>cloudbay-parent</module>
+        <module>cloudbay-commons</module>
+        <module>domain-services/account-service</module>
+        <module>domain-services/catalog-service</module>
+        <module>domain-services/greeting-service</module>
+        <module>domain-services/auction-service</module>
+    </modules>
+
+</project>

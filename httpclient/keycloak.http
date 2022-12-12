@@ -1,0 +1,119 @@
+### Well-Known URL OpenID Connect
+GET {{auth-url}}/realms/{{realm}}/.well-known/openid-configuration
+
+> {%
+  client.global.set("issuer", response.body.issuer);
+  client.global.set("authorization_endpoint", response.body.authorization_endpoint);
+  client.global.set("token_endpoint", response.body.token_endpoint);
+  client.global.set("introspection_endpoint", response.body.introspection_endpoint);
+  client.global.set("userinfo_endpoint", response.body.userinfo_endpoint);
+  client.global.set("end_session_endpoint", response.body.end_session_endpoint);
+  client.global.set("jwks_uri", response.body.jwks_uri);
+  client.global.set("check_session_iframe", response.body.check_session_iframe);
+  client.global.set("revocation_endpoint", response.body.revocation_endpoint);
+%}
+
+### JWKS
+GET {{auth-url}}/realms/cloudbay/protocol/openid-connect/certs
+
+### SAML 2.0 Identity Provider Metadata
+GET {{auth-url}}/realms/{{realm}}/protocol/saml/descriptor
+Accept: application/xml
+
+### Realm Issuer Uri
+GET {{auth-url}}/realms/{{realm}}
+Accept: application/json
+
+
+### Get Authentication Token for Intro Service
+POST {{auth-url}}h/realms/{{realm}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+grant_type=client_credentials&client_id={{intro-client-id}}&client_secret={{intro-client-secret}}
+
+> {%
+  client.global.set("access_token", response.body.access_token);
+  client.global.set("refresh_token", response.body.refresh_token);
+%}
+
+### Get Access Token By Code
+POST {{token_endpoint}}
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+grant_type=authorization_code&code=ac45d825-5401-40b4-b153-0d32cc14efb7.f74e39da-5bdf-4878-a1d1-24fbb0103a52.3de34c32-3f0e-43ed-a662-e882ac720099&redirect_uri=http://localhost:8100/account-service/login/oauth2/code/keycloak&client_id=account_service&client_secret=0cz4Qt9O3bdrNxSxTsiYX7ESkCUTwamV
+
+
+
+### Get Access Token
+POST {{auth-url}}/realms/{{realm}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+grant_type=password&username={{username}}&password={{password}}&client_id={{manual-test-client-id}}&client_secret={{manual-test-client-secret}}
+
+> {%
+  client.global.set("access_token", response.body.access_token);
+  client.global.set("refresh_token", response.body.refresh_token);
+%}
+
+
+### Token Introspection
+POST {{auth-url}}/realms/{{realm}}/protocol/openid-connect/token/introspect
+Authorization: Basic {{intro-client-id}} {{intro-client-secret}}
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+token={{access_token}}
+
+### User Info Token Inspection
+POST {{auth-url}}/realms/{{realm}}/protocol/openid-connect/userinfo
+Authorization: Bearer {{access_token}}
+
+
+### Refresh Token Grant Flow
+POST {{token_endpoint}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&refresh_token={{refresh_token}}&client_id={{intro-client-id}}&client_secret={{intro-client-secret}}
+
+### Revoke Token - intro client
+POST {{revocation_endpoint}}
+Authorization: Basic {{intro-client-id}} {{intro-client-secret}}
+Content-Type: application/x-www-form-urlencoded
+
+token={{refresh_token}}&token_type_hint=refresh_token
+
+### Get Access Token für Acount-Service
+POST {{auth-url}}/realms/{{realm}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+grant_type=client_credentials&client_id={{account-service-client-id}}&client_secret={{account-service-client-secret}}
+
+> {%
+  client.global.set("access_token", response.body.access_token);
+  client.global.set("refresh_token", response.body.refresh_token);
+%}
+
+### Get Access Token for User
+POST {{auth-url}}/realms/{{realm}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+grant_type=password&username={{username}}&password={{password}}&client_id={{account-service-client-id}}&client_secret={{account-service-client-secret}}
+
+> {%
+  client.global.set("user_access_token", response.body.access_token);
+  client.global.set("user_refresh_token", response.body.refresh_token);
+%}
+
+### Introspection Token
+POST {{introspection_endpoint}}
+Accept: application/json
+Authorization: Basic {{account-service-client-id}} {{account-service-client-secret}}
+Content-Type: application/x-www-form-urlencoded
+
+token={{user_access_token}}
+

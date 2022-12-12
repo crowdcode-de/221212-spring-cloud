@@ -1,0 +1,14 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8200/realms/cloudbay
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-name: Account Service
+            client-id: account-service
+            client-secret: 2qBwaVmuyU0fVO1WeMuVx4N0OTDYmfUS
+            scope: email
