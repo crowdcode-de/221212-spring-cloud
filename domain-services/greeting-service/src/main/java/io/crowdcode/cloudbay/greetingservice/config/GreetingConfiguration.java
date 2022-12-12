@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class GreetingConfiguration {
 
     @Bean
-//    @RefreshScope später
+    @RefreshScope
     @ConfigurationProperties(value = "io.crowdcode.greeting", ignoreUnknownFields = false)
     public GreetingProperties greetingProperties() {
         return new GreetingProperties();
