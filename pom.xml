@@ -33,9 +33,9 @@
         <module>domain-services/catalog-service</module>
         <module>domain-services/greeting-service</module>
         <module>domain-services/auction-service</module>
+        <module>domain-services/time-service</module>
         <module>cluster-services/config-server</module>
         <module>cluster-services/admin-server</module>
-        <module>domain-services/time-service</module>
     </modules>
 
 </project>
