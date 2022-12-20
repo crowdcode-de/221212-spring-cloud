@@ -7,3 +7,7 @@ GET http://localhost:8300/greeting-service/sayGoodBye
 
 ### Refresh Properties
 POST http://localhost:8300/greeting-service/actuator/refresh
+
+### WelcomeMessage
+GET http://localhost:9000/greeting-service/sayHello
+
