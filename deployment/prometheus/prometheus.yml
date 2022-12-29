@@ -9,6 +9,13 @@ scrape_configs:
       - targets: ['host.docker.internal:9000']
         labels:
           application: 'gateway-service'
+  - job_name: 'cli-client'
+    scrape_interval: 2s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:7400']
+        labels:
+          application: 'cli-client'
   - job_name: 'greeting-service'
     metrics_path: '/greeting-service/actuator/prometheus'
     scheme: 'http'
