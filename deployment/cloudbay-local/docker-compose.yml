@@ -4,12 +4,11 @@ services:
   # Cloud Services
 
   mailtrap:
-    image: dbck/mailtrap:1.0.0
+    image: dbck/mailtrap:1.2.0
     ports:
       - "80:80"
       - "25:25"
       - "110:110"
-    platform: linux/amd64
 
   postgres:
     image: postgres:14
@@ -57,7 +56,7 @@ services:
   #      - "9411:9411"#
 
   grafana:
-    image: grafana/grafana:8.2.6
+    image: grafana/grafana:9.3.2
     depends_on:
       - prometheus
       - tempo
@@ -100,7 +99,7 @@ services:
     tty: true
 
   tempo:
-    image: grafana/tempo
+    image: grafana/tempo:1.5.0
     command: -config.file /etc/tempo-config.yml
     ports:
       - "3200:3200"
