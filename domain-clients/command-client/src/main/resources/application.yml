@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cli-client
+  config:
+    import: "optional:configserver:http://localhost:8888"
+server:
+  port: 7400
+logging:
+  config:
+
+
+

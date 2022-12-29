@@ -37,7 +37,8 @@
         <module>cluster-services/config-server</module>
         <module>cluster-services/admin-server</module>
         <module>cluster-services/discovery-server</module>
-<!--        <module>cluster-services/gateway-server</module>-->
+        <module>domain-clients/command-client</module>
+        <!--        <module>cluster-services/gateway-server</module>-->
     </modules>
 
 </project>
