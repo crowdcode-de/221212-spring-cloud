@@ -24,10 +24,22 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 6,
-    "iteration": 1654517000502,
-    "links": [],
-    "liveNow": false,
+    "id": 4,
+    "links": [
+        {
+            "asDropdown": true,
+            "icon": "external link",
+            "includeVars": false,
+            "keepTime": true,
+            "tags": [],
+            "targetBlank": false,
+            "title": "Dashboard",
+            "tooltip": "",
+            "type": "dashboards",
+            "url": ""
+        }
+    ],
+    "liveNow": true,
     "panels": [
         {
             "datasource": {
@@ -70,7 +82,7 @@
         {
             "datasource": {
                 "type": "tempo",
-                "uid": "tempo"
+                "uid": "tempo-crowdcode"
             },
             "description": "",
             "gridPos": {
@@ -84,7 +96,7 @@
                 {
                     "datasource": {
                         "type": "tempo",
-                        "uid": "tempo"
+                        "uid": "tempo-crowdcode"
                     },
                     "query": "$traceID",
                     "queryType": "traceId",
@@ -97,7 +109,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "prometheus-crowdcode"
             },
             "fieldConfig": {
                 "defaults": {
@@ -105,6 +117,8 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
@@ -161,7 +175,8 @@
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
-                    "placement": "bottom"
+                    "placement": "bottom",
+                    "showLegend": true
                 },
                 "tooltip": {
                     "mode": "single",
@@ -172,38 +187,27 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
+                        "uid": "prometheus-crowdcode"
                     },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{uri=~\".*\"}[$__rate_interval])) by (le))",
-                    "legendFormat": "max",
+                    "expr": "{uri=~\".*\"}",
                     "range": true,
                     "refId": "A"
                 },
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
+                        "uid": "prometheus-crowdcode"
                     },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{uri=~\".*\"}[$__rate_interval])) by (le))",
-                    "hide": false,
-                    "legendFormat": "tp99",
+                    "expr": "{uri=~\".*\"}",
                     "range": true,
                     "refId": "B"
                 },
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
+                        "uid": "prometheus-crowdcode"
                     },
-                    "editorMode": "code",
-                    "exemplar": true,
-                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{uri=~\".*\"}[$__rate_interval])) by (le))",
-                    "hide": false,
-                    "legendFormat": "tp95",
+                    "expr": "{uri=~\".*\"}",
                     "range": true,
                     "refId": "C"
                 }
@@ -212,7 +216,7 @@
             "type": "timeseries"
         }
     ],
-    "schemaVersion": 36,
+    "schemaVersion": 37,
     "style": "dark",
     "tags": [],
     "templating": {
@@ -220,8 +224,8 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "0003776c79e02b6c",
-                    "value": "0003776c79e02b6c"
+                    "text": "e242753fffe2198b778d74668aee6254",
+                    "value": "e242753fffe2198b778d74668aee6254"
                 },
                 "datasource": {
                     "type": "loki",
@@ -234,8 +238,13 @@
                 "multi": false,
                 "name": "traceID",
                 "options": [],
-                "query": "label_values(traceID)",
-                "refresh": 1,
+                "query": {
+                    "label": "traceID",
+                    "refId": "LokiVariableQueryEditor-VariableQuery",
+                    "stream": "",
+                    "type": 1
+                },
+                "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
                 "sort": 0,
@@ -244,13 +253,13 @@
         ]
     },
     "time": {
-        "from": "now-15m",
+        "from": "now-5m",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Logs, Traces, Metrics",
-    "uid": "szVLMe97z",
-    "version": 7,
+    "title": "Logs, Traces, Metrics SPRING",
+    "uid": "LTpxpxpVz",
+    "version": 5,
     "weekStart": ""
 }
