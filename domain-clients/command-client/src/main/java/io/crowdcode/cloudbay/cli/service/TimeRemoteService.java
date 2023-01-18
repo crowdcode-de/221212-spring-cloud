@@ -1,4 +1,4 @@
-package io.crowdcode.cloudbay.cli;
+package io.crowdcode.cloudbay.cli.service;
 
 import io.crowdcode.cloudbay.common.AnsiColor;
 import io.micrometer.observation.annotation.Observed;

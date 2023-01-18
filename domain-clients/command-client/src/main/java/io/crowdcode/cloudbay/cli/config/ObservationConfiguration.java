@@ -1,6 +1,6 @@
 package io.crowdcode.cloudbay.cli.config;
 
-import io.crowdcode.cloudbay.cli.TimeRemoteService;
+import io.crowdcode.cloudbay.cli.service.TimeRemoteService;
 import io.crowdcode.cloudbay.common.AnsiColor;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
@@ -8,6 +8,7 @@ import io.micrometer.observation.aop.ObservedAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,10 +26,12 @@ public class ObservationConfiguration {
 
     /**
      * Needed to be instrumented by observation services
+     *
      * @param builder
      * @return restTemplate
      */
     @Bean
+    @ConditionalOnMissingBean(value = RestTemplate.class)
     RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
@@ -40,7 +43,6 @@ public class ObservationConfiguration {
             return false;
         };
         return new ObservedAspect(observationRegistry, logAll);
-
     }
 
     @Bean

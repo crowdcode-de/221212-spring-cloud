@@ -52,12 +52,12 @@
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.0.0-M9</version>
             </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>3.0.0-M8</version>
+                <version>3.0.0-M9</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

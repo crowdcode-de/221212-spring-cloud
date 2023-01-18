@@ -1,0 +1,13 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka"
+  instance:
+    prefer-ip-address: false
+io:
+  crowdcode:
+    services:
+      time:
+        url: "http://time-service/time-service/now"
+      greeting:
+        welcome-url: "https://greeting-service/greeting-service/sayHello"
