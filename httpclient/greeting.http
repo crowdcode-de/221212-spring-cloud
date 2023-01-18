@@ -11,3 +11,8 @@ POST http://localhost:8300/greeting-service/actuator/refresh
 ### WelcomeMessage
 GET http://localhost:9000/greeting-service/sayHello
 
+### WelcomeMessage Circuite Breaker
+GET http://localhost:8300/greeting-service/sayHello
+
+###
+GET http://localhost:8400/time-service/now

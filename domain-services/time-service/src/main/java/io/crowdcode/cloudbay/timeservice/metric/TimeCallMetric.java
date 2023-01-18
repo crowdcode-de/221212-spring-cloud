@@ -24,7 +24,7 @@ public class TimeCallMetric {
 
     @PostConstruct
     public void init() {
-        timeCounter = Counter.builder("timer.time_count")
+        timeCounter = Counter.builder("timer_time_count")
                 .tag("type", "total")
                 .description("Total number of time requests")
                 .register(meterRegistry);

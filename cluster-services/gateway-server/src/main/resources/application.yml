@@ -16,6 +16,7 @@ spring:
           filters:
             - AddRequestHeader=X-Tenant,CROWDCODE
             - AddResponseHeader=X-Tenant,MICROMETER
+            - Post=HelloAllianz
         - id: time-service
           uri: ${TIME_SERVICE_URL:http://localhost:8400}
           predicates:

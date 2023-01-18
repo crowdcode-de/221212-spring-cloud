@@ -88,7 +88,6 @@ services:
       - JAEGER_SAMPLER_TYPE=const
       - JAEGER_SAMPLER_PARAM=1
 
-
   prometheus:
     image: prom/prometheus:v2.40.6
     ports:

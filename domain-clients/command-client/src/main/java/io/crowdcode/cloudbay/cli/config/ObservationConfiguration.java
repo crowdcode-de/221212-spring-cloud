@@ -53,7 +53,7 @@ public class ObservationConfiguration {
             String userId = String.valueOf(highCardinalityValues.nextLong(100_000));
             Observation.createNotStarted("time.observation", registry)
                     .contextualName("cli-runner")
-                    .lowCardinalityKeyValue("userTyoe", "my-user-type")
+                    .lowCardinalityKeyValue("userType", "my-user-type")
                     .highCardinalityKeyValue("userID", userId)
                     .observe(() -> {
                         log.info(AnsiColor.green("observed"));
