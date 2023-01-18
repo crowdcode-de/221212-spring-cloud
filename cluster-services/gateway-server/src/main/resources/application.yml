@@ -12,9 +12,17 @@ spring:
           uri: ${GREETING_SERVICE_URL:http://localhost:8300}
           predicates:
             - Path=/greeting-service/**
+            - PreAndSuffix=/greet,sayHello
           filters:
             - AddRequestHeader=X-Tenant,CROWDCODE
             - AddResponseHeader=X-Tenant,MICROMETER
+        - id: time-service
+          uri: ${TIME_SERVICE_URL:http://localhost:8400}
+          predicates:
+            - name: PreAndSuffix
+              args:
+                prefix: "/time-service"
+                suffix: "/now"
 #      default-filters:
 #        - postLoggingGatewayFilter
 server:

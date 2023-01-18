@@ -1,1 +1,5 @@
-GET http://localhost:8080/api/version
+### Call Greeting Service Directly
+GET http://localhost:8300/greeting-service/sayHello
+
+### Call Greeting Service via API Gateway
+GET http://localhost:9000/greeting-service/sayHello
